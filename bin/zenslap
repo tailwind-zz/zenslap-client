@@ -3,8 +3,14 @@
 require 'rubygems'
 require 'heroku'
 require 'heroku/command'
+require 'thor/runner'
 
-puts "Hello"
+
+#FIXME This cant be correct
+require File.dirname(__FILE__) + '/../lib/zenslap-client'
+
+
+Zenslap::Runner.start
 
 # module Zenslap
 #   extend self

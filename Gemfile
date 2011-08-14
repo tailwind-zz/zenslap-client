@@ -1,4 +1,7 @@
 source "http://rubygems.org"
+
+gem "thor"
+
 # Add dependencies required to use your gem here.
 # Example:
 #   gem "activesupport", ">= 2.3.5"
@@ -13,4 +16,5 @@ group :development, :test do
   gem "rspec"
   gem "cucumber"
   gem 'aruba'
+  gem 'ruby-debug'
 end
