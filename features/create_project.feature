@@ -3,11 +3,14 @@ Feature: Create project
   As a developer 
   I want to be able to create a project on it
 
-  Scenario: Creating a new project
-    When I run `zenslap apps:create`
+  Scenario: Creating a new project for the first time
+    When I run `zenslap create` interactively
+    When I type "Hello"
     Then the output should contain:
     """
-    Hello
+    Login to zenslap to find your token, http://zenslap.me/login
+    Please Enter your zenslap token:
+    Please enter the desired zenslap application name ()
     """
   
   

@@ -1,16 +1,44 @@
 #!/usr/bin/env ruby
 
-require 'rubygems'
-require 'heroku'
-require 'heroku/command'
-require 'thor/runner'
+lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
+$LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
+
+require 'zenslap-client'
+
+args = ARGV.dup
+ARGV.clear
+command = args.shift.strip rescue 'help'
+
+# Zenslap::Command.load
+Zenslap::Command.run(command, args)
 
 
-#FIXME This cant be correct
-require File.dirname(__FILE__) + '/../lib/zenslap-client'
 
 
-Zenslap::Runner.start
+
+
+
+
+
+# require 'rubygems'
+# require 'thor/runner'
+# 
+# 
+# #FIXME This cant be correct
+# require File.dirname(__FILE__) + '/../lib/zenslap-client'
+# 
+# 
+# Zenslap::Runner.start
+
+
+
+
+
+
+
+
+
+
 
 # module Zenslap
 #   extend self

@@ -1,7 +1,6 @@
 source "http://rubygems.org"
 
-gem "thor"
-
+gem 'heroku'
 # Add dependencies required to use your gem here.
 # Example:
 #   gem "activesupport", ">= 2.3.5"
@@ -16,5 +15,13 @@ group :development, :test do
   gem "rspec"
   gem "cucumber"
   gem 'aruba'
+end
+
+group :local do
   gem 'ruby-debug'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
+  gem 'rb-fsevent'
+  gem 'growl_notify'
 end
