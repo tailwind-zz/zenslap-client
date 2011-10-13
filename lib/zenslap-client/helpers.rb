@@ -1,10 +1,13 @@
 module Zenslap
   module Helpers
     
-    def ask_for something, default = nil
-      display(default ? "#{something} (#{}):" : "#{something}:")
-      input = $stdin.read.strip
-      (input.nil? || input.empty?) ? default : input
+    def ask_for something, options = {}
+      options ||= {}
+      ask("#{something}:") do |q|
+        q.default = options[:default] if options[:default]
+        q.validate = options[:validate] || /\A\w+\Z/
+        q.responses[:not_valid] = options[:not_valid] || "Input cannot be blank."
+      end
     end
     
     def display(msg="", newline=true)

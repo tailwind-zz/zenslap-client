@@ -39,6 +39,7 @@ GEM
       launchy (>= 0.3.2)
       rest-client (~> 1.6.1)
       term-ansicolor (~> 1.0.5)
+    highline (1.6.2)
     jeweler (1.5.2)
       bundler (~> 1.0.0)
       git (>= 1.2.5)
@@ -102,6 +103,7 @@ DEPENDENCIES
   guard-cucumber
   guard-rspec
   heroku
+  highline
   jeweler (~> 1.5.2)
   mocha
   rb-fsevent

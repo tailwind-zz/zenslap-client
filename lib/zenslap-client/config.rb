@@ -27,5 +27,15 @@ class Zenslap::Config
   def config_file_path
     File.join(home_directory, '.zenslap', 'config')
   end
+  
+  
+  def github_repository
+    @github_repository ||= begin
+      github_url = `git config --get remote.origin.url`
+      github_repository = github_url[/github.com.(.+)/, 1].gsub(/\.git$/, "")
+      say "Unable to find a github repository in git config" unless github_repository
+      ask_for("Github repository",  :default => github_repository, :validate => /\A[\w-]+\/[\w-]+\Z/, :not_valid => "Must be in format: username/repository_name")
+    end
+  end
         
 end  

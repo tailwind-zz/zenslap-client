@@ -5,16 +5,16 @@ $LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
 
 require 'zenslap-client'
 
-args = ARGV.dup
-ARGV.clear
-command = args.shift.strip rescue 'help'
-
-# Zenslap::Command.load
-Zenslap::Command.run(command, args)
-
-
+# args = ARGV.dup
+# ARGV.clear
+# command = args.shift.strip rescue 'help'
+# 
+# # Zenslap::Command.load
+# Zenslap::Command.run(command, args)
 
 
+
+puts Zenslap::Config.new.github_repository
 
 
 

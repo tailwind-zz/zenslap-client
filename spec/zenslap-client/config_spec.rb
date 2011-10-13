@@ -26,7 +26,7 @@ describe Zenslap::Config do
       let(:exist_or_not) { 'not exist' }
       
       before {
-        $stdin.stubs(:read).returns(token)
+        subject.stubs(:ask).returns(token)
         subject.token
       }
       
@@ -46,6 +46,11 @@ describe Zenslap::Config do
       
       its(:token) { should == token }
     end
+    
+  end
+  
+  
+  describe "github_repo" do
     
   end
 end
