@@ -18,7 +18,8 @@ group :development, :test do
 end
 
 group :local do
-  gem 'ruby-debug'
+  gem 'ruby-debug', :platform => 'ruby_18'
+  gem 'ruby-debug19', :platform => 'ruby_19'
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-cucumber'
