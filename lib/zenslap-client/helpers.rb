@@ -3,7 +3,8 @@ module Zenslap
     
     def ask_for something, default = nil
       display(default ? "#{something} (#{}):" : "#{something}:")
-      gets.strip || default
+      input = $stdin.read.strip
+      (input.nil? || input.empty?) ? default : input
     end
     
     def display(msg="", newline=true)
@@ -11,12 +12,12 @@ module Zenslap
         puts(msg)
       else
         print(msg)
-        STDOUT.flush
+        $stdout.flush
       end
     end
     
     def home_directory
-      running_on_windows? ? ENV['USERPROFILE'] : ENV['HOME']
+      File.expand_path(running_on_windows? ? ENV['USERPROFILE'] : ENV['HOME'])
     end
 
     def running_on_windows?

@@ -13,6 +13,7 @@ group :development, :test do
   gem "jeweler", "~> 1.5.2"
   gem "rcov", ">= 0"
   gem "rspec"
+  gem "mocha"
   gem "cucumber"
   gem 'aruba'
 end
