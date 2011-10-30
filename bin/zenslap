@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 
-lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
-$LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
+# lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
+# $LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
 
-require 'zenslap-client'
+# require 'zenslap-client'
 
 # args = ARGV.dup
 # ARGV.clear
@@ -12,25 +12,38 @@ require 'zenslap-client'
 # # Zenslap::Command.load
 # Zenslap::Command.run(command, args)
 
+#!/usr/bin/env ruby
+require "rubygems" # ruby1.9 doesn't "require" it though
+require "thor"
+
+lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
+$LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
+require 'zenslap-client'
 
 
-puts Zenslap::Config.new.github_repository
 
 
 
+class ZenslapT < Thor
+  include Config
+  
+  desc "create", "Create a zenslap app"
+  def create
+    puts "create"
+  end
 
+  desc "destroy", "Destroy your zenslap app"
+  def destroy
+    puts "destroy"
+  end
 
-# require 'rubygems'
-# require 'thor/runner'
-# 
-# 
-# #FIXME This cant be correct
-# require File.dirname(__FILE__) + '/../lib/zenslap-client'
-# 
-# 
-# Zenslap::Runner.start
+  desc "config:add", "Add config variables to your zenslap app"
+  define_method "config:add" do 
+    puts 'config:add'
+  end
+end
 
-
+ZenslapT.start
 
 
 
