@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "zenslap/version"
 
 Gem::Specification.new do |s|
-  s.name        = "zenslap-client"
+  s.name        = "zenslap"
   s.version     = Zenslap::VERSION
   s.authors     = ["stellard"]
   s.email       = ["scott@zenslap.me"]
@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.summary     = %q{The zenslap client gem allows you to create/destroy and configure your zenslap test environment on heroku}
   s.description = %q{Client gem for zenslap.me}
 
-  s.rubyforge_project = "zenslap-client"
+  s.rubyforge_project = "zenslap"
   s.homepage = "http://github.com/tailwind/zenslap-client"
   
   s.files         = `git ls-files`.split("\n")
