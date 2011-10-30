@@ -1,51 +1,125 @@
 #!/usr/bin/env ruby
-
-# lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
-# $LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
-
-# require 'zenslap-client'
-
-# args = ARGV.dup
-# ARGV.clear
-# command = args.shift.strip rescue 'help'
-# 
-# # Zenslap::Command.load
-# Zenslap::Command.run(command, args)
-
-#!/usr/bin/env ruby
-require "rubygems" # ruby1.9 doesn't "require" it though
-require "thor"
-
-lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
-$LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
-require 'zenslap-client'
-
-
-
-
-
-class ZenslapT < Thor
-  include Config
-  
-  desc "create", "Create a zenslap app"
-  def create
-    puts "create"
-  end
-
-  desc "destroy", "Destroy your zenslap app"
-  def destroy
-    puts "destroy"
-  end
-
-  desc "config:add", "Add config variables to your zenslap app"
-  define_method "config:add" do 
-    puts 'config:add'
+# 1.9 adds realpath to resolve symlinks; 1.8 doesn't
+# have this method, so we add it so we get resolved symlinks
+# and compatibility
+unless File.respond_to? :realpath
+  class File #:nodoc:
+    def self.realpath path
+      return realpath(File.readlink(path)) if symlink?(path)
+      path
+    end
   end
 end
+$: << File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../lib')
+require 'rubygems'
+require 'gli'
+include GLI
 
-ZenslapT.start
+require 'zenslap'
 
 
+
+program_desc 'Describe your application here'
+
+version Zenslap::VERSION
+
+# desc 'Describe some switch here'
+# switch [:s,:switch]
+# 
+# desc 'Describe some flag here'
+# default_value 'the default'
+# arg_name 'The name of the argument'
+# flag [:f,:flagname]
+
+
+pre do |global,command,options,args|
+  # Pre logic here
+  # Return true to proceed; false to abourt and not call the
+  # chosen command
+  # Use skips_pre before a command to skip this block
+  # on that command only
+  true
+end
+
+post do |global,command,options,args|
+  # Post logic here
+  # Use skips_post before a command to skip this
+  # block on that command only
+end
+
+on_error do |exception|
+  # Error logic here
+  # return false to skip default error handling
+  true
+end
+
+exit GLI.run(ARGV)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# #!/usr/bin/env ruby
+# 
+# # lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
+# # $LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
+# 
+# # require 'zenslap-client'
+# 
+# # args = ARGV.dup
+# # ARGV.clear
+# # command = args.shift.strip rescue 'help'
+# # 
+# # # Zenslap::Command.load
+# # Zenslap::Command.run(command, args)
+# 
+# #!/usr/bin/env ruby
+# require "rubygems" # ruby1.9 doesn't "require" it though
+# require "thor"
+# 
+# lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
+# $LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
+# require 'zenslap-client'
+# 
+# 
+# 
+# 
+# 
+# class ZenslapT < Thor
+#   include Config
+#   
+#   desc "create", "Create a zenslap app"
+#   def create
+#     puts "create"
+#   end
+# 
+#   desc "destroy", "Destroy your zenslap app"
+#   def destroy
+#     puts "destroy"
+#   end
+# 
+#   desc "config:add", "Add config variables to your zenslap app"
+#   define_method "config:add" do 
+#     puts 'config:add'
+#   end
+# end
+# 
+# ZenslapT.start
+# 
+# 
 
 
 

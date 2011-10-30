@@ -1,0 +1,5 @@
+= zenslap
+
+Generate this with
+    zenslap rdoc
+After you have described your command line interface
