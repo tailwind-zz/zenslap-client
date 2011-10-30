@@ -42,3 +42,7 @@ pkg
 #*.swp
 tmp/aruba
 tmp/
+*.gem
+.bundle
+Gemfile.lock
+pkg/*
