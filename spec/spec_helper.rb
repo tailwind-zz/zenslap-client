@@ -4,7 +4,7 @@ require 'rspec'
 require 'mocha'
 # require 'vcr'
 # require 'webmock/rspec'
-require 'zenslap-client'
+require 'zenslap'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.

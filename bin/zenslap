@@ -11,13 +11,8 @@ unless File.respond_to? :realpath
   end
 end
 $: << File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../lib')
-require 'rubygems'
-require 'gli'
-include GLI
 
 require 'zenslap'
-
-
 
 program_desc 'Describe your application here'
 
